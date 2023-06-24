@@ -1,7 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, Form  
 from sensei_core.core_wolfram_chain import initialize_wolfram_agent, ask_wolfram_alpha
 import os
-from dtos.request_schemas import RequestBodyParams
 
 from fastapi.middleware.cors import CORSMiddleware
 import json
@@ -27,23 +26,6 @@ agent = initialize_wolfram_agent()
 # def init_app():
 #     print("Starting")
 #     agent = initialize_wolfram_agent()
-
-@app.post('/api/ask')
-async def ask_solution(request: RequestBodyParams):
-    print("Agent -- ", agent)
-    print("User question: " + str(request.user_query))
-    extracted_text = request.user_query
-
-    context = ""
-
-    if request.meta and request.meta.get('context') == "doubt":
-        context = "doubt"
-    
-    solution = ask_wolfram_alpha(agent, extracted_text, context)
-    return {
-            "status": "success",
-            "message": solution
-        }
 
 @app.post("/api/v1/ask")  
 async def upload_image(  

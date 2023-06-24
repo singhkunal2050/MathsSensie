@@ -19,7 +19,9 @@ memory = ConversationBufferMemory(memory_key="chat_history")
 # os.environ["WOLFRAM_ALPHA_APPID"]
 
 def initialize_wolfram_agent():
+    logging.info("initializing wolfram agent")
     llm = OpenAI(temperature=0)
+    logging.info("initializing wolfram tool")
     tools = load_tools(['wolfram-alpha'])
     agent =  initialize_agent(tools, llm, agent="conversational-react-description", memory=memory, verbose=True)
     return agent

@@ -27,6 +27,12 @@ agent = initialize_wolfram_agent()
 #     print("Starting")
 #     agent = initialize_wolfram_agent()
 
+@app.get("/test")
+def test():
+  return {
+    "Message": "Foo"
+  }
+
 @app.post("/api/v1/ask")  
 async def upload_image(  
     image: UploadFile = File(...), user_query: str = Form(...), meta: str = Form(...)  

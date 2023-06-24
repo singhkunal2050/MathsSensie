@@ -27,8 +27,8 @@ agent = initialize_wolfram_agent()
 #     print("Starting")
 #     agent = initialize_wolfram_agent()
 
-@app.get("/test")
-def test():
+@app.get("/")
+async def test():
   return {
     "Message": "Foo"
   }
@@ -47,6 +47,6 @@ async def upload_image(
     
     solution = ask_wolfram_alpha(agent, user_query, context)
     return {
-            "status": "success",
-            "message": solution
-        }
+      "status": "success",
+      "message": solution
+    }

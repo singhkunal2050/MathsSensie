@@ -27,6 +27,9 @@ agent = initialize_wolfram_agent()
 #     print("Starting")
 #     agent = initialize_wolfram_agent()
 
+print("API_KEY --", os.getenv("OPENAI_API_KEY"))
+print("WOLF API KEY -- ",os.getenv("WOLFRAM_ALPHA_APPID"))
+
 @app.get("/")
 async def test():
   return {
